@@ -1,0 +1,37 @@
+<!ELEMENT clinica (mascotas, veterinarios, servicios, requisitos, citas)>
+
+<!ELEMENT mascotas (mascota+)>
+<!ELEMENT mascota (nombre, especie, raza)>
+<!ATTLIST mascota
+          id ID #REQUIRED>
+
+<!ELEMENT veterinarios (veterinario+)>
+<!ELEMENT veterinario (cedula, nombre)>
+<!ATTLIST veterinario
+          id ID #REQUIRED>
+
+<!ELEMENT servicios (servicio+)>
+<!ELEMENT servicio (nombre, duracion, costo)>
+<!ATTLIST servicio
+          id ID #REQUIRED>
+
+<!ELEMENT requisitos (requisito*)>
+<!ELEMENT requisito EMPTY>
+<!ATTLIST requisito
+          servicio IDREF #REQUIRED
+          requiere IDREF #REQUIRED>
+
+<!ELEMENT citas (cita*)>
+<!ELEMENT cita (fecha)>
+<!ATTLIST cita
+          mascota IDREF #REQUIRED
+          servicio IDREF #REQUIRED
+          veterinario IDREF #REQUIRED>
+
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT especie (#PCDATA)>
+<!ELEMENT raza (#PCDATA)>
+<!ELEMENT cedula (#PCDATA)>
+<!ELEMENT duracion (#PCDATA)>
+<!ELEMENT costo (#PCDATA)>
+<!ELEMENT fecha (#PCDATA)>
