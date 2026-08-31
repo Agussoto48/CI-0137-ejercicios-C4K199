@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE clinica SYSTEM "clinica.dtd">
+
+<clinica>
+    <mascotas>
+        <mascota id="M001">
+            <nombre>Luna</nombre>
+            <especie>Perro</especie>
+            <raza>Golden Retriever</raza>
+        </mascota>
+
+        <mascota id="M002">
+            <nombre>Milo</nombre>
+            <especie>Gato</especie>
+            <raza>Siamés</raza>
+        </mascota>
+
+        <mascota id="M003">
+            <nombre>Nala</nombre>
+            <especie>Perro</especie>
+            <raza>Beagle</raza>
+        </mascota>
+
+        <mascota id="M004">
+            <nombre>Coco</nombre>
+            <especie>Conejo</especie>
+            <raza>Enano</raza>
+        </mascota>
+
+        <mascota id="M005">
+            <nombre>Max</nombre>
+            <especie>Perro</especie>
+            <raza>Schnauzer</raza>
+        </mascota>
+    </mascotas>
+
+
+    <veterinarios>
+        <veterinario id="V109450321">
+            <cedula>109450321</cedula>
+            <nombre>Laura Méndez</nombre>
+        </veterinario>
+
+        <veterinario id="V204780156">
+            <cedula>204780156</cedula>
+            <nombre>Diego Vargas</nombre>
+        </veterinario>
+
+        <veterinario id="V107890432">
+            <cedula>107890432</cedula>
+            <nombre>Sofía Castillo</nombre>
+        </veterinario>
+
+        <veterinario id="V302340987">
+            <cedula>302340987</cedula>
+            <nombre>Andrés Rojas</nombre>
+        </veterinario>
+    </veterinarios>
+
+
+    <servicios>
+        <servicio id="SV-101">
+            <nombre>Consulta general</nombre>
+            <duracion>30</duracion>
+            <costo>15000</costo>
+        </servicio>
+
+        <servicio id="SV-205">
+            <nombre>Vacunación</nombre>
+            <duracion>20</duracion>
+            <costo>10000</costo>
+        </servicio>
+
+        <servicio id="SV-310">
+            <nombre>Limpieza dental</nombre>
+            <duracion>60</duracion>
+            <costo>25000</costo>
+        </servicio>
+
+        <servicio id="SV-415">
+            <nombre>Cirugía menor</nombre>
+            <duracion>90</duracion>
+            <costo>50000</costo>
+        </servicio>
+    </servicios>
+
+
+    <requisitos>
+        <requisito servicio="SV-310" requiere="SV-101"/>
+        <requisito servicio="SV-415" requiere="SV-101"/>
+    </requisitos>
+
+
+    <citas>
+        <cita mascota="M001"
+              servicio="SV-101"
+              veterinario="V109450321">
+            <fecha>2026-09-03</fecha>
+        </cita>
+
+        <cita mascota="M002"
+              servicio="SV-205"
+              veterinario="V204780156">
+            <fecha>2026-09-04</fecha>
+        </cita>
+
+        <cita mascota="M003"
+              servicio="SV-310"
+              veterinario="V107890432">
+            <fecha>2026-09-05</fecha>
+        </cita>
+
+        <cita mascota="M004"
+              servicio="SV-101"
+              veterinario="V302340987">
+            <fecha>2026-09-06</fecha>
+        </cita>
+
+        <cita mascota="M005"
+              servicio="SV-415"
+              veterinario="V107890432">
+            <fecha>2026-09-10</fecha>
+        </cita>
+    </citas>
+
+</clinica>
