@@ -12,9 +12,9 @@
     --p3r-noche: #001736;
     --p3r-marino: #00183E;
     --p3r-amarillo: #FFC54A;
-    --p3r-rojo: #E10000;
     --p3r-blanco: #FFFFFF;
     --p3r-celeste-claro: #E4F6FE;
+    --p3r-azul-medio: #0A2A55;
 
     /* ---------- Colores semánticos (modo claro) ---------- */
     --color-fondo: var(--p3r-celeste);
@@ -24,7 +24,7 @@
     --color-titulo: var(--p3r-marino);
     --color-primario: var(--p3r-cian);
     --color-acento: var(--p3r-amarillo);
-    --color-decorativo: var(--p3r-rojo);
+    --color-capa: var(--p3r-cian);
 
     --color-cabecera-fondo: var(--p3r-marino);
     --color-cabecera-texto: var(--p3r-blanco);
@@ -63,4 +63,18 @@
     --radio-tarjeta: 0.75rem;
     --desplazamiento-capa: 0.775rem;
     --transicion: 0.2s ease;
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-fondo: var(--p3r-noche);
+        --color-superficie: var(--p3r-marino);
+        --color-superficie-alterna: var(--p3r-azul-medio);
+        --color-texto: var(--p3r-blanco);
+        --color-titulo: var(--p3r-amarillo);
+        --color-capa: var(--p3r-amarillo);
+        --color-chip-fondo: var(--p3r-amarillo);
+        --color-chip-texto: var(--p3r-noche);
+    }
 }

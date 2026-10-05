@@ -196,7 +196,7 @@ a:focus-visible {
     position: absolute;
     inset: calc(var(--borde-tarjeta) * -1);
     z-index: -1;
-    background-color: var(--color-primario);
+    background-color: var(--color-capa);
     border: none;
     border-radius: inherit;
     transform: translate(
