@@ -1,0 +1,63 @@
+/*
+   BASE
+*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-base);
+    font-size: var(--texto-base);
+    line-height: var(--altura-linea);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/*
+   TIPOGRAFÍA
+*/
+
+h1,
+h2,
+h3 {
+    margin: 0 0 var(--espacio-sm);
+    font-family: var(--fuente-titulos);
+    font-weight: 600;
+    line-height: var(--altura-linea-titulos);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+h1 {
+    font-family: var(--fuente-display);
+    font-size: var(--texto-xxl);
+    font-weight: 400;
+}
+
+h2 {
+    font-size: var(--texto-xl);
+    color: var(--color-titulo);
+}
+
+h3 {
+    font-size: var(--texto-lg);
+}
+
+p {
+    margin: 0 0 var(--espacio-md);
+}
+
+ul {
+    margin: 0 0 var(--espacio-md);
+    padding-left: var(--espacio-lg);
+}

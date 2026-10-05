@@ -1,0 +1,48 @@
+/*
+   TOKENS DE DISEÑO
+   Con Temática de Persona 3 Reload
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jersey+25&family=M+PLUS+1p&family=Space+Grotesk:wght@300..700&display=swap");
+
+:root {
+    /* ---------- Paleta P3R ---------- */
+    --p3r-celeste: #79D7FD;
+    --p3r-cian: #00BBFA;
+    --p3r-noche: #001736;
+    --p3r-marino: #00183E;
+    --p3r-amarillo: #FFC54A;
+    --p3r-rojo: #E10000;
+    --p3r-blanco: #FFFFFF;
+
+    /* ---------- Colores semánticos (modo claro) ---------- */
+    --color-fondo: var(--p3r-celeste);
+    --color-superficie: var(--p3r-blanco);
+    --color-texto: var(--p3r-noche);
+    --color-titulo: var(--p3r-marino);
+    --color-primario: var(--p3r-cian);
+    --color-acento: var(--p3r-amarillo);
+    --color-decorativo: var(--p3r-rojo);
+
+    /* ---------- Tipografía ---------- */
+    --fuente-base: "Space Grotesk", "Segoe UI", Roboto, Arial, sans-serif;
+    --fuente-titulos: "Barlow Semi Condensed", "Arial Narrow", sans-serif;
+    --fuente-etiquetas: "M PLUS 1p", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+    --fuente-display: "Jersey 25", Impact, "Arial Black", sans-serif;
+
+    --texto-sm: 0.875rem;
+    --texto-base: 1rem;
+    --texto-lg: 1.25rem;
+    --texto-xl: 1.75rem;
+    --texto-xxl: 2.5rem;
+
+    --altura-linea: 1.6;
+    --altura-linea-titulos: 1.2;
+
+    /* ---------- Espaciado ---------- */
+    --espacio-xs: 0.25rem;
+    --espacio-sm: 0.5rem;
+    --espacio-md: 1rem;
+    --espacio-lg: 1.5rem;
+    --espacio-xl: 2.5rem;
+}
