@@ -1,0 +1,312 @@
+/* Estilos generales */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    gap: var(--espacio-lg);
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: var(--espacio-lg) var(--espacio-md);
+    color: var(--color-texto);
+    font-family: var(--fuente-base);
+    font-size: var(--texto-base);
+    line-height: var(--altura-linea);
+    background-color: var(--color-fondo);
+    background-image:
+        linear-gradient(
+            rgba(0, 25, 80, 0.40),
+            rgba(0, 15, 60, 0.55)
+        ),
+        url("../img/background-p3.png");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* Tipografía */
+
+h1,
+h2,
+h3 {
+    margin: 0 0 var(--espacio-sm);
+    font-family: var(--fuente-titulos);
+    font-weight: 600;
+    line-height: var(--altura-linea-titulos);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+h1 {
+    font-family: var(--fuente-display);
+    font-size: var(--texto-xxl);
+    font-weight: 400;
+}
+
+h2 {
+    font-size: var(--texto-xl);
+    color: var(--color-titulo);
+}
+
+h3 {
+    font-size: var(--texto-lg);
+}
+
+p {
+    margin: 0 0 var(--espacio-md);
+}
+
+ul {
+    margin: 0 0 var(--espacio-md);
+    padding-left: var(--espacio-lg);
+}
+
+
+/* Distribución de la página */
+
+.cabecera {
+    display: grid;
+    grid-template-areas:
+        "foto"
+        "nombre"
+        "subtitulo"
+        "contacto";
+    justify-items: center;
+    gap: var(--espacio-sm);
+    padding: var(--espacio-lg);
+    background-color: var(--color-cabecera-fondo);
+    color: var(--color-cabecera-texto);
+    text-align: center;
+}
+
+.cabecera h1 {
+    grid-area: nombre;
+    margin: 0;
+    color: var(--color-acento);
+}
+
+.contacto {
+    grid-area: contacto;
+}
+
+.contenido {
+    display: grid;
+    gap: var(--espacio-lg);
+}
+
+footer {
+    padding: var(--espacio-md);
+    background-color: var(--color-cabecera-fondo);
+    color: var(--color-cabecera-texto);
+    border-radius: var(--radio);
+    font-family: var(--fuente-etiquetas);
+    font-size: var(--texto-sm);
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* Foto de perfil */
+
+.foto-perfil {
+    grid-area: foto;
+    width: 9rem;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: var(--borde-grueso) solid var(--color-primario);
+    border-radius: 50%;
+    box-shadow: 0 0 0 var(--espacio-xs) var(--color-acento);
+}
+
+
+/* Subtítulo */
+
+.subtitulo {
+    grid-area: subtitulo;
+    margin: 0;
+    color: var(--color-primario);
+    font-family: var(--fuente-etiquetas);
+}
+
+
+/* Información de contacto */
+
+.contacto ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-xs);
+    margin: var(--espacio-sm) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contacto li {
+    overflow-wrap: anywhere;
+}
+
+
+/* Enlaces */
+
+a {
+    color: var(--color-enlace);
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+    text-underline-offset: 0.2em;
+    transition: color var(--transicion), text-decoration-color var(--transicion);
+}
+
+a:hover {
+    color: var(--color-enlace-hover);
+}
+
+a:focus-visible {
+    outline: 0.1875rem solid var(--color-enlace-hover);
+    outline-offset: 0.1875rem;
+    border-radius: var(--radio);
+}
+
+
+/* Tarjetas */
+
+.cabecera,
+.tarjeta {
+    position: relative;
+    border: var(--borde-tarjeta) solid var(--color-titulo);
+    border-radius: var(--radio-tarjeta);
+}
+
+/* Fondo desplazado de las tarjetas */
+.cabecera::before,
+.tarjeta::before {
+    content: "";
+    position: absolute;
+    inset: calc(var(--borde-tarjeta) * -1);
+    z-index: -1;
+    background-color: var(--color-capa);
+    border: none;
+    border-radius: inherit;
+    transform: translate(
+        var(--desplazamiento-capa),
+        var(--desplazamiento-capa)
+    );
+}
+
+/* La cabecera usa amarillo en lugar de celeste */
+.cabecera::before {
+    background-color: var(--color-acento);
+}
+
+.tarjeta {
+    padding: var(--espacio-lg);
+    background-color: var(--color-superficie);
+}
+
+.tarjeta h2 {
+    padding-bottom: var(--espacio-xs);
+    border-bottom: 0.1875rem solid var(--color-primario);
+}
+
+.tarjeta > :last-child,
+article > :last-child {
+    margin-bottom: 0;
+}
+
+article + article {
+    margin-top: var(--espacio-md);
+    padding-top: var(--espacio-md);
+    border-top: var(--borde-fino) dashed var(--color-primario);
+}
+
+.fecha {
+    color: var(--color-titulo);
+    font-family: var(--fuente-display);
+    font-size: var(--texto-lg);
+    letter-spacing: 0.05em;
+}
+
+
+/* Habilidades */
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espacio-sm);
+    padding: 0;
+    list-style: none;
+}
+
+.chips li {
+    padding: var(--espacio-xs) var(--espacio-md);
+    background-color: var(--color-chip-fondo);
+    color: var(--color-chip-texto);
+    border-radius: var(--radio);
+    font-family: var(--fuente-etiquetas);
+    font-size: var(--texto-sm);
+}
+
+
+/* Tabla de idiomas */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: var(--espacio-sm) var(--espacio-md);
+    text-align: left;
+    border-bottom: var(--borde-fino) solid var(--color-primario);
+}
+
+th {
+    background-color: var(--color-cabecera-fondo);
+    color: var(--color-cabecera-texto);
+    font-family: var(--fuente-etiquetas);
+    font-weight: 400;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--color-superficie-alterna);
+}
+
+
+/* Ajustes para pantallas grandes */
+
+@media (min-width: 48rem) {
+    body {
+        padding: var(--espacio-xl) var(--espacio-lg);
+    }
+
+    .cabecera {
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+            "foto nombre"
+            "foto subtitulo"
+            "foto contacto";
+        justify-items: start;
+        align-items: center;
+        column-gap: var(--espacio-xl);
+        text-align: left;
+    }
+
+    .contacto ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: var(--espacio-lg);
+    }
+}
