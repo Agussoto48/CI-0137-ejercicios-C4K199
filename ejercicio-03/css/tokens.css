@@ -65,9 +65,32 @@
     --transicion: 0.2s ease;
 }
 
-/* Modo oscuro */
+/*
+   Modo oscuro
+   - data-tema="oscuro" en <html>: lo elige el usuario con el botón.
+   - Sin data-tema: se respeta la preferencia del sistema operativo.
+   - data-tema="claro": fuerza el modo claro aunque el sistema esté en oscuro.
+   Los valores se repiten porque un selector no puede combinarse con @media.
+*/
+:root {
+    color-scheme: light;
+}
+
+:root[data-tema="oscuro"] {
+    color-scheme: dark;
+    --color-fondo: var(--p3r-noche);
+    --color-superficie: var(--p3r-marino);
+    --color-superficie-alterna: var(--p3r-azul-medio);
+    --color-texto: var(--p3r-blanco);
+    --color-titulo: var(--p3r-amarillo);
+    --color-capa: var(--p3r-amarillo);
+    --color-chip-fondo: var(--p3r-amarillo);
+    --color-chip-texto: var(--p3r-noche);
+}
+
 @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-tema="claro"]) {
+        color-scheme: dark;
         --color-fondo: var(--p3r-noche);
         --color-superficie: var(--p3r-marino);
         --color-superficie-alterna: var(--p3r-azul-medio);
