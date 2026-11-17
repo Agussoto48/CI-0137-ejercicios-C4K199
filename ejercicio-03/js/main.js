@@ -192,6 +192,36 @@ function crearArticulo(item) {
     return articulo;
 }
 
+/* ---------- Tema claro / oscuro ---------- */
+const raiz = document.documentElement;
+const botonTema = document.getElementById("boton-tema");
+const sistemaOscuro = window.matchMedia("(prefers-color-scheme: dark)");
+
+/* Tema visible: el elegido con el botón (data-tema) o, si no hay,
+   el del sistema operativo. */
+function obtenerTemaActual() {
+    if (raiz.dataset.tema) {
+        return raiz.dataset.tema;
+    }
+    return sistemaOscuro.matches ? "oscuro" : "claro";
+}
+
+/* El botón indica con aria-pressed si el modo oscuro está activo. */
+function actualizarBoton() {
+    const oscuro = obtenerTemaActual() === "oscuro";
+    botonTema.setAttribute("aria-pressed", String(oscuro));
+}
+
+function aplicarTema(tema) {
+    raiz.dataset.tema = tema;
+    actualizarBoton();
+}
+
+function alternarTema() {
+    const siguiente = obtenerTemaActual() === "oscuro" ? "claro" : "oscuro";
+    aplicarTema(siguiente);
+}
+
 /* ---------- Inicio ---------- */
 renderizarLista(contenedores.contacto, contacto, crearContacto);
 renderizarLista(contenedores.experiencia, experiencia, crearArticulo);
@@ -200,3 +230,8 @@ renderizarLista(contenedores.certificaciones, certificaciones, crearArticulo);
 renderizarLista(contenedores.habilidadesTecnicas, habilidadesTecnicas, crearChip);
 renderizarLista(contenedores.habilidadesBlandas, habilidadesBlandas, crearChip);
 renderizarLista(contenedores.idiomas, idiomas, crearFilaIdioma);
+
+actualizarBoton();
+botonTema.addEventListener("click", alternarTema);
+/* Si el sistema cambia de tema mientras no hay uno elegido, el botón se sincroniza. */
+sistemaOscuro.addEventListener("change", actualizarBoton);
