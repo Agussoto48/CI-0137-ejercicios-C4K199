@@ -7,6 +7,7 @@
 
 /* ---------- Contenedores del HTML ---------- */
 const contenedores = {
+    contacto: document.getElementById("lista-contacto"),
     experiencia: document.getElementById("experiencia"),
     formacion: document.getElementById("formacion"),
     certificaciones: document.getElementById("certificaciones"),
@@ -42,6 +43,15 @@ const habilidadesBlandas = [
 const idiomas = [
     { idioma: "Español", nivel: "Nativo" },
     { idioma: "Inglés", nivel: "C1" },
+];
+
+/* Enlaces de contacto. "etiqueta" es opcional y se muestra antes del enlace;
+   "externo" abre el enlace en otra pestaña. */
+const contacto = [
+    { etiqueta: "Correo", texto: "agustinsc0903@gmail.com", href: "mailto:agustinsc0903@gmail.com" },
+    { etiqueta: "Teléfono", texto: "+506 6196-7784", href: "tel:+50661967784" },
+    { texto: "GitHub", href: "https://github.com/agussoto48", externo: true },
+    { texto: "LinkedIn", href: "https://www.linkedin.com/in/agust%C3%ADn-soto-chaves-561786418/", externo: true },
 ];
 
 /* Experiencia, formación y certificaciones comparten la misma forma:
@@ -123,6 +133,25 @@ function renderizarLista(contenedor, datos, crearItem) {
     contenedor.appendChild(fragmento);
 }
 
+function crearContacto(medio) {
+    const item = document.createElement("li");
+
+    if (medio.etiqueta) {
+        item.appendChild(document.createTextNode(`${medio.etiqueta}: `));
+    }
+
+    const enlace = crearElemento("a", medio.texto);
+    enlace.href = medio.href;
+
+    if (medio.externo) {
+        enlace.target = "_blank";
+        enlace.rel = "noopener";
+    }
+
+    item.appendChild(enlace);
+    return item;
+}
+
 function crearChip(habilidad) {
     return crearElemento("li", habilidad.nombre);
 }
@@ -164,6 +193,7 @@ function crearArticulo(item) {
 }
 
 /* ---------- Inicio ---------- */
+renderizarLista(contenedores.contacto, contacto, crearContacto);
 renderizarLista(contenedores.experiencia, experiencia, crearArticulo);
 renderizarLista(contenedores.formacion, formacion, crearArticulo);
 renderizarLista(contenedores.certificaciones, certificaciones, crearArticulo);
