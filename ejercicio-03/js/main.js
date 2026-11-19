@@ -196,6 +196,27 @@ function crearArticulo(item) {
 const raiz = document.documentElement;
 const botonTema = document.getElementById("boton-tema");
 const sistemaOscuro = window.matchMedia("(prefers-color-scheme: dark)");
+const CLAVE_TEMA = "tema";
+const TEMAS_VALIDOS = ["claro", "oscuro"];
+
+/* localStorage puede lanzar errores si el navegador bloquea el almacenamiento;
+   en ese caso la página sigue funcionando, solo que sin recordar el tema. */
+function leerTemaGuardado() {
+    try {
+        const tema = localStorage.getItem(CLAVE_TEMA);
+        return TEMAS_VALIDOS.includes(tema) ? tema : null;
+    } catch {
+        return null;
+    }
+}
+
+function guardarTema(tema) {
+    try {
+        localStorage.setItem(CLAVE_TEMA, tema);
+    } catch {
+        /* Sin almacenamiento disponible: el tema solo dura esta visita. */
+    }
+}
 
 /* Tema visible: el elegido con el botón (data-tema) o, si no hay,
    el del sistema operativo. */
@@ -220,9 +241,18 @@ function aplicarTema(tema) {
 function alternarTema() {
     const siguiente = obtenerTemaActual() === "oscuro" ? "claro" : "oscuro";
     aplicarTema(siguiente);
+    guardarTema(siguiente);
 }
 
 /* ---------- Inicio ---------- */
+/* Si hay un tema guardado de una visita anterior, se aplica. */
+const temaGuardado = leerTemaGuardado();
+if (temaGuardado) {
+    aplicarTema(temaGuardado);
+} else {
+    actualizarBoton();
+}
+
 renderizarLista(contenedores.contacto, contacto, crearContacto);
 renderizarLista(contenedores.experiencia, experiencia, crearArticulo);
 renderizarLista(contenedores.formacion, formacion, crearArticulo);
@@ -231,7 +261,6 @@ renderizarLista(contenedores.habilidadesTecnicas, habilidadesTecnicas, crearChip
 renderizarLista(contenedores.habilidadesBlandas, habilidadesBlandas, crearChip);
 renderizarLista(contenedores.idiomas, idiomas, crearFilaIdioma);
 
-actualizarBoton();
 botonTema.addEventListener("click", alternarTema);
 /* Si el sistema cambia de tema mientras no hay uno elegido, el botón se sincroniza. */
 sistemaOscuro.addEventListener("change", actualizarBoton);
