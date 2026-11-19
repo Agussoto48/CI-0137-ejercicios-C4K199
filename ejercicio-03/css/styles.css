@@ -159,6 +159,41 @@ footer p {
 }
 
 
+/* Botón de tema */
+
+.boton-tema {
+    position: absolute;
+    top: var(--espacio-md);
+    right: var(--espacio-md);
+    width: 3rem;
+    aspect-ratio: 1;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform var(--transicion), box-shadow var(--transicion);
+}
+
+.boton-tema img {
+    width: 100%;
+}
+
+.boton-tema:hover {
+    transform: scale(1.1) rotate(-10deg);
+}
+
+.boton-tema:focus-visible {
+    outline: 0.1875rem solid var(--color-acento);
+    outline-offset: 0.1875rem;
+}
+
+/* Brillo cuando el modo oscuro está activo */
+.boton-tema[aria-pressed="true"] {
+    box-shadow: 0 0 1rem var(--color-acento);
+}
+
+
 /* Enlaces */
 
 a {
