@@ -1,0 +1,13 @@
+<article>
+    <h3><%= item.titulo %></h3>
+    <% if (item.subtitulo) { %><p><%= item.subtitulo %></p><% } %>
+    <% if (item.fecha) { %><p class="fecha"><%= item.fecha %></p><% } %>
+    <% if (item.descripcion) { %><p><%= item.descripcion %></p><% } %>
+    <% if (item.logros) { %>
+    <ul>
+        <% item.logros.forEach((logro) => { %>
+        <li><%= logro %></li>
+        <% }) %>
+    </ul>
+    <% } %>
+</article>
