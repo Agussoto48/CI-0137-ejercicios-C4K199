@@ -345,3 +345,62 @@ tbody tr:nth-child(even) {
         column-gap: var(--espacio-lg);
     }
 }
+
+/* Formulario de contacto */
+
+.formulario {
+    display: grid;
+    gap: var(--espacio-sm);
+}
+
+.formulario label {
+    font-family: var(--fuente-etiquetas);
+    font-size: var(--texto-sm);
+}
+
+.formulario input,
+.formulario textarea {
+    width: 100%;
+    padding: var(--espacio-sm);
+    color: var(--color-texto);
+    font: inherit;
+    background-color: var(--color-superficie-alterna);
+    border: var(--borde-fino) solid var(--color-primario);
+    border-radius: var(--radio);
+}
+
+.formulario input:focus-visible,
+.formulario textarea:focus-visible {
+    outline: 0.1875rem solid var(--color-acento);
+    outline-offset: 0.0625rem;
+}
+
+.formulario button {
+    justify-self: start;
+    margin-top: var(--espacio-sm);
+    padding: var(--espacio-sm) var(--espacio-lg);
+    color: var(--color-chip-texto);
+    font-family: var(--fuente-titulos);
+    font-size: var(--texto-base);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: var(--color-chip-fondo);
+    border: none;
+    border-radius: var(--radio);
+    cursor: pointer;
+    transition: background-color var(--transicion);
+}
+
+.formulario button:hover,
+.formulario button:focus-visible {
+    background-color: var(--color-primario);
+}
+
+blockquote {
+    margin: 0 0 var(--espacio-md);
+    padding: var(--espacio-sm) var(--espacio-md);
+    border-left: 0.25rem solid var(--color-primario);
+    background-color: var(--color-superficie-alterna);
+    white-space: pre-line;
+}

@@ -12,6 +12,9 @@ app.set("views", path.join(import.meta.dirname, "views"));
 /* Archivos estáticos: CSS, JS e imágenes */
 app.use(express.static(path.join(import.meta.dirname, "public")));
 
+/* Lee los formularios enviados (application/x-www-form-urlencoded) en req.body */
+app.use(express.urlencoded({ extended: false }));
+
 /* Rutas */
 app.use("/", curriculumRoutes);
 
