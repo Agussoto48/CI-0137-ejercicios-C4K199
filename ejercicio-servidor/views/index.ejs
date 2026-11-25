@@ -1,0 +1,112 @@
+<%- include("partials/inicio", { titulo: `Currículum - ${cv.nombre}` }) %>
+
+    <header class="cabecera">
+        <button class="boton-tema" type="button" id="boton-tema" aria-pressed="false" aria-label="Modo oscuro"
+            title="Cambiar entre modo claro y oscuro">
+            <img src="/img/moon.png" alt="">
+        </button>
+
+        <h1><%= cv.nombre %></h1>
+        <p class="subtitulo"><%= cv.subtitulo %></p>
+
+        <img class="foto-perfil" src="<%= cv.foto %>" alt="Foto de perfil de <%= cv.nombre %>">
+
+        <nav class="contacto">
+            <ul>
+                <% cv.contacto.forEach((medio) => { %>
+                <li>
+                    <% if (medio.etiqueta) { %><%= medio.etiqueta %>: <% } %>
+                    <a href="<%= medio.href %>"<% if (medio.externo) { %> target="_blank" rel="noopener"<% } %>><%= medio.texto %></a>
+                </li>
+                <% }) %>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenido">
+
+        <section class="tarjeta">
+            <h2>Perfil profesional</h2>
+            <p><%= cv.perfil %></p>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Experiencia y proyectos</h2>
+            <% cv.experiencia.forEach((item) => { %>
+            <%- include("partials/articulo", { item }) %>
+            <% }) %>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Formación académica</h2>
+            <% cv.formacion.forEach((item) => { %>
+            <%- include("partials/articulo", { item }) %>
+            <% }) %>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Certificaciones</h2>
+            <% cv.certificaciones.forEach((item) => { %>
+            <%- include("partials/articulo", { item }) %>
+            <% }) %>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Habilidades</h2>
+
+            <h3>Habilidades técnicas</h3>
+            <ul class="chips">
+                <% cv.habilidadesTecnicas.forEach((habilidad) => { %>
+                <li><%= habilidad %></li>
+                <% }) %>
+            </ul>
+
+            <h3>Habilidades blandas</h3>
+            <ul class="chips">
+                <% cv.habilidadesBlandas.forEach((habilidad) => { %>
+                <li><%= habilidad %></li>
+                <% }) %>
+            </ul>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Idiomas</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Idioma</th>
+                        <th>Nivel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% cv.idiomas.forEach((registro) => { %>
+                    <tr>
+                        <td><%= registro.idioma %></td>
+                        <td><%= registro.nivel %></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="tarjeta">
+            <h2>Contacto</h2>
+
+            <form class="formulario" action="/contacto" method="post">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="correo">Correo</label>
+                <input type="email" id="correo" name="correo" required>
+
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+    </main>
+
+<%- include("partials/fin") %>

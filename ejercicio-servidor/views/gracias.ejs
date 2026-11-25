@@ -1,0 +1,12 @@
+<%- include("partials/inicio", { titulo: "Mensaje enviado" }) %>
+
+    <main class="contenido">
+        <section class="tarjeta">
+            <h2>¡Gracias, <%= nombre %>!</h2>
+            <p>Recibí tu mensaje y te responderé a <strong><%= correo %></strong> lo antes posible.</p>
+            <blockquote><%= mensaje %></blockquote>
+            <p><a href="/">Volver al currículum</a></p>
+        </section>
+    </main>
+
+<%- include("partials/fin") %>
