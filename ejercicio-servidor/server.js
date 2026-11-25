@@ -18,6 +18,11 @@ app.use(express.urlencoded({ extended: false }));
 /* Rutas */
 app.use("/", curriculumRoutes);
 
+/* 404: ninguna ruta anterior respondió */
+app.use((req, res) => {
+    res.status(404).render("404", { ruta: req.originalUrl });
+});
+
 app.listen(PUERTO, () => {
     console.log(`Servidor escuchando en http://localhost:${PUERTO}`);
 });
